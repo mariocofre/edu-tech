@@ -20,7 +20,7 @@ public class Nota {
     @Column(nullable = false)
     private Float nota;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_evaluacion",nullable = false)
     private Evaluacion evaluacion;
 

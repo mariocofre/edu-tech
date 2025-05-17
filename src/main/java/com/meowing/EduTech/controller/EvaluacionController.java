@@ -33,8 +33,8 @@ public class EvaluacionController {
         return ResponseEntity.ok(evaluaciones);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<Evaluacion> obtenerEvaluacion(@RequestParam int id) {
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Evaluacion> obtenerEvaluacion(@PathVariable int id) {
         try{
             Evaluacion evaluacion = evaluacionService.obtenerEvaluacion(id);
             return ResponseEntity.ok(evaluacion);
@@ -43,7 +43,7 @@ public class EvaluacionController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable int id) {
         try {
             evaluacionService.eliminarEvaluacion(id);
