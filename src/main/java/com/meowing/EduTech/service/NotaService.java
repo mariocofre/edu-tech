@@ -1,8 +1,9 @@
-package com.Meowing.Evaluaciones.service;
+package com.meowing.EduTech.service;
 
 
-import com.Meowing.Evaluaciones.model.Nota;
-import com.Meowing.Evaluaciones.repository.NotaRepository;
+
+import com.meowing.EduTech.model.Nota;
+import com.meowing.EduTech.repository.NotaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,13 +1,13 @@
-package com.Meowing.Evaluaciones.service;
+package com.meowing.EduTech.service;
 
-import com.Meowing.Evaluaciones.model.Evaluacion;
-import com.Meowing.Evaluaciones.repository.EvaluacionRepository;
+import com.meowing.EduTech.model.Evaluacion;
+import com.meowing.EduTech.repository.EvaluacionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-//** CLASE DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
+//** SERVICIO DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
 @Service
 @Transactional
 public class EvaluacionService {

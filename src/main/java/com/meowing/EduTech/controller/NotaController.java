@@ -1,14 +1,15 @@
-package com.Meowing.Evaluaciones.controller;
+package com.meowing.EduTech.controller;
 
-import com.Meowing.Evaluaciones.model.Nota;
-import com.Meowing.Evaluaciones.service.NotaService;
+
+import com.meowing.EduTech.model.Nota;
+import com.meowing.EduTech.service.NotaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//** CONTROLADOR DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
 @RestController
 @RequestMapping("/api/v1/notas")
 public class NotaController {

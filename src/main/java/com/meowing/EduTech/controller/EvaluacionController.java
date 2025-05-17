@@ -1,7 +1,6 @@
-package com.Meowing.Evaluaciones.controller;
-
-import com.Meowing.Evaluaciones.model.Evaluacion;
-import com.Meowing.Evaluaciones.service.EvaluacionService;
+package com.meowing.EduTech.controller;
+import com.meowing.EduTech.model.Evaluacion;
+import com.meowing.EduTech.service.EvaluacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//** CLASE DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
+//** CONTROLADOR DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
 @RestController
 @RequestMapping("api/v1/evaluaciones")
 public class EvaluacionController {

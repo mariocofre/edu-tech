@@ -1,4 +1,4 @@
-package com.Meowing.Evaluaciones.model;
+package com.meowing.EduTech.model;
 
 
 import jakarta.persistence.*;
