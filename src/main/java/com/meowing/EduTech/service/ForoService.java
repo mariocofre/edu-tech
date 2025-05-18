@@ -24,4 +24,11 @@ public class ForoService {
     public Foro crearForo(Foro foro) {return foroRepository.save(foro);}
 
     public void eliminarForo(int id) {foroRepository.deleteById(id);}
+
+    // Obtener foro por seccion
+    /*
+    public List<Foro> forosBySeccion(Integer idSeccion){
+        return foroRepository.findByidSeccion(Integer idSeccion)
+    }
+     */
 }
