@@ -14,12 +14,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+//** CLASE DEL MICROSERVICIO 2.- MONITOREO DEL SISTEMA **
 @Entity
 @Table(name = "SoporteSistema")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SoporteSistema {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_soporte_sistema;
