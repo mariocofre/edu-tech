@@ -1,2 +1,0 @@
-# Este archivo mantiene esta carpeta en el repositorio Git aunque esté vacía.
-# Puedes borrar este archivo cuando agregues código real a esta carpeta.

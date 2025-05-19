@@ -26,7 +26,7 @@ public class ComentarioForoService {
 
     // Obtener comentarios por id de foro
     public List<ComentarioForo> obtenerComentarioByForo(Integer idForo) {
-        return comentarioForoRepository.findByForoId(idForo);
+        return comentarioForoRepository.findByForo_Idforo(idForo);
     }
 
     // Obteer comentarios por id de usuario

@@ -15,7 +15,7 @@ public class Foro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_foro;
+    private int idforo;
 
     /* [Descomentar cuando Seccion este en model]
     @OneToOne

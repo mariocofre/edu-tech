@@ -43,7 +43,7 @@ public class ComentarioForoController {
     }
 
     //Obtener comentarios por id de foro
-    @GetMapping("/foro/{id}")
+    @GetMapping("/foro/{idForo}")
     public ResponseEntity<List<ComentarioForo>> obtenerComentario(@PathVariable Integer idForo) {
         List<ComentarioForo> comentarios = comentarioForoService.obtenerComentarioByForo(idForo);
         if (comentarios.isEmpty()) {
