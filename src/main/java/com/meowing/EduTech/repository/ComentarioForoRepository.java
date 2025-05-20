@@ -11,7 +11,7 @@ import java.util.List;
 public interface ComentarioForoRepository extends JpaRepository<ComentarioForo, Integer> {
 
     //Funcion para anlcar id de foro a comentario foros
-    List<ComentarioForo> findByForoId(Integer idForo);
+    List<ComentarioForo> findByForo_Idforo(Integer idForo);
 
     //Funcion para anclar id de usuario a comentario foros
     /*
