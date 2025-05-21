@@ -10,8 +10,6 @@ import java.util.List;
 
 @Service
 @Transactional
-
-
 //** CLASE DEL MICROSERVICIO 2.- MONITOREO DEL SISTEMA **
 public class SoporteIncidenciaService {
 
@@ -38,7 +36,7 @@ public class SoporteIncidenciaService {
             incidenciaExistente.setFecha_inicio_incidencia(nuevaIncidencia.getFecha_inicio_incidencia());
             incidenciaExistente.setFecha_termino_incidencia(nuevaIncidencia.getFecha_termino_incidencia());
             incidenciaExistente.setId_soporte_sistema(nuevaIncidencia.getId_soporte_sistema());
-            // incidenciaExistente.setId_tipo_incidencia(nuevaIncidencia.getId_tipo_incidencia()); // si la clase ya existe
+            incidenciaExistente.setId_tipo_incidencia(nuevaIncidencia.getId_tipo_incidencia()); 
 
             return soporteIncidenciaRepository.save(incidenciaExistente);
         }).orElseThrow(() -> new RuntimeException("Incidencia con ID " + id + " no encontrada."));

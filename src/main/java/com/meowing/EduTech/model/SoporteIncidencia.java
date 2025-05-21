@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "Evaluacion")
+@Table(name = "SoporteIncidencia")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,10 +36,8 @@ public class SoporteIncidencia {
     @JoinColumn(name = "id_soporte_sistema", nullable = false)
     private SoporteSistema id_soporte_sistema;
 
-
-    /* Comentado hasta que cree la clase TipoIncidencia
     @OneToOne
     @JoinColumn(name = "id_tipo_incidencia", nullable = false)
     private TipoIncidencia id_tipo_incidencia;
-    */
+    
 }
