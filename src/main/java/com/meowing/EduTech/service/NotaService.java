@@ -29,11 +29,7 @@ public class NotaService {
         return notaRepository.save(nota);
     }
 
-    /* [Descomentar cuando usuario este implementado y funcionando]
     public List<Nota> obtenerNotasPorUsuario(Integer idUsuario) {
-        return notaRepository.findByUsuarioId(idUsuario);
+        return notaRepository.findByUsuario_idUsuario(idUsuario);
     }
-    */
-
-
 }

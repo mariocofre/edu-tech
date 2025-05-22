@@ -24,9 +24,9 @@ public class Nota {
     @JoinColumn(name = "id_evaluacion",nullable = false)
     private Evaluacion evaluacion;
 
-    /* Remover comentario cuando Usuario se encuentre en model
+
     @ManyToOne
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;
-     */
+
 }

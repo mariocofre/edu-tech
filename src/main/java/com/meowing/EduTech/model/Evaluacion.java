@@ -24,9 +24,9 @@ public class Evaluacion {
     @Column(nullable = false)
     private Date fecha_Evaluacion;
 
-    /*  Quitar este comentario cuando Seccion este en la carpeta model
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "id_seccion",nullable = false)
     private Seccion seccion;
-     */
+
 }
