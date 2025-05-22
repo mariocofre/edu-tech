@@ -46,6 +46,4 @@ public class SoporteIncidenciaService {
         return soporteIncidenciaRepository.findBySoporteSistema_IdSoporteSistema(idSoporteSistema);
     }
 
-
-
 }

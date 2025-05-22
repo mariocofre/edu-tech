@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meowing.EduTech.model.SoporteIncidencia;
+import com.meowing.EduTech.model.SoporteSistema;
 import com.meowing.EduTech.service.SoporteIncidenciaService;
 
 
 @RestController
-@RequestMapping("api/v1/incidencias")
+@RequestMapping("api/v1/incidencia")
 public class SoporteIncidenciaController {
 
 
@@ -56,7 +57,7 @@ public class SoporteIncidenciaController {
     }
 
 // Obtener una incidencia por el id de un soporte     
-    @GetMapping("/buscar/{idSoporteSistema}") // ENDPOINT OK
+    @GetMapping("/buscar/{id}") // ENDPOINT OK
     public ResponseEntity<List<SoporteIncidencia>> obtenerIncidenicaDeSoporte(@PathVariable Integer idSoporteSistema) {
         List<SoporteIncidencia> nuevaIncidencia = incidenciaService.obtenerIncidenciaPorSoporte(idSoporteSistema);
         return ResponseEntity.ok(nuevaIncidencia);
