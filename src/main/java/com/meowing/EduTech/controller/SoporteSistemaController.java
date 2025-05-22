@@ -39,11 +39,21 @@ public class SoporteSistemaController {
     }
 
 
+    // Crear un soporte
     @PostMapping
     public ResponseEntity<SoporteSistema> crearSoporte(@RequestBody SoporteSistema soporte) {
         SoporteSistema nuevoSoporte = soporteService.agregarUnSoporte(soporte);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoSoporte);
     }
 
+
+    // Visualizar un soporte por id de un usuario
+    /* [Descomentar cuando Usuario se encuentre operativo]
+    @GetMapping("/soportes/{idUsuario}")
+    public ResponseEntity<List<SoporteSistema>> obtenerSoporteDeUsuario(@PathVariable Integer idUsuario) {
+        List<SoporteSistema> nuevoSoporte = soporteService.obtenerSoporteSistemaPorUsuario(idUsuario);
+        return ResponseEntity.ok(nuevoSoporte);
+    }
+    */
     
 }

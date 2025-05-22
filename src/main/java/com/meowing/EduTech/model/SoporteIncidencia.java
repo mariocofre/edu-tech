@@ -2,6 +2,9 @@ package com.meowing.EduTech.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,24 +23,23 @@ public class SoporteIncidencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_soporte_incidencia;
+    private int idSoporteIncidencia;
 
-    @Column(length = 1000, nullable = false)
+    @Column(length = 1000)
     private String detalles;
 
     @Column(nullable = false)
-    private LocalDateTime fecha_inicio_incidencia;
+    private LocalDateTime fechaInicioIncidencia;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha_termino_incidencia;
+    @Column
+    private LocalDateTime fechaTerminoIncidencia;
 
-    
     @ManyToOne
-    @JoinColumn(name = "id_soporte_sistema", nullable = false)
-    private SoporteSistema id_soporte_sistema;
+    @JoinColumn(name = "id_soporte_sistema", unique = false)
+    private SoporteSistema soporteSistema;
 
-    @OneToOne
-    @JoinColumn(name = "id_tipo_incidencia", nullable = false)
-    private TipoIncidencia id_tipo_incidencia;
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_incidencia", unique = false)
+    private TipoIncidencia tipoIncidencia;
     
 }

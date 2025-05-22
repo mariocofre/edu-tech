@@ -18,9 +18,10 @@ public class TipoIncidencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_tipo_incidencia;
+    private int idTipoIncidencia ;
+    
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = false)
     private String tipo;
 
 }

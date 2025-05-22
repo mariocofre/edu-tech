@@ -21,16 +21,16 @@ public class SoporteSistema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_soporte_sistema;
+    private int idSoporteSistema;
 
     /* Quitar este comentario cuando la clase Usuario esté creada en la carpeta model 
     @OneToOne
     @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario id_usuario;
+    private Usuario usuario;
     */
 
 
-    @Column(nullable = false)
-    private LocalDateTime inicio_trabajo_incidencia;
+    @Column
+    private LocalDateTime inicioTrabajoIncidencia;
     
 }
