@@ -32,9 +32,9 @@ public class ComentarioForo {
     @JoinColumn(name = "id_foro", nullable = false)
     private Foro foro;
 
-    /* [Descomentar cuando usuario este en model]
+ 
     @ManyToOne
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;
-     */
+
 }

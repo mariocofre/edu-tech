@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,12 +49,11 @@ public class SoporteSistemaController {
 
 
     // Visualizar un soporte por id de un usuario
-    /* [Descomentar cuando Usuario se encuentre operativo]
     @GetMapping("/soportes/{idUsuario}")
     public ResponseEntity<List<SoporteSistema>> obtenerSoporteDeUsuario(@PathVariable Integer idUsuario) {
         List<SoporteSistema> nuevoSoporte = soporteService.obtenerSoporteSistemaPorUsuario(idUsuario);
         return ResponseEntity.ok(nuevoSoporte);
     }
-    */
+    
     
 }

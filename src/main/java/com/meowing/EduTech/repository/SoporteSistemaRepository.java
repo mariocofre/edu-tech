@@ -15,7 +15,6 @@ public interface SoporteSistemaRepository extends JpaRepository<SoporteSistema, 
     // Esta función es para que Spring JPA entienda que usuario es el campo de la entidad 
     // SoporteSistema y permite que el idUsuario esté en SoporteSistema
 
-    // Descomentar cuando la clase Usuario esté lista
-    //List<SoporteSistema> findByUsuarioId(Integer Usuario);
+    List<SoporteSistema> findByUsuario_idUsuario(Integer Usuario);
     
 }

@@ -17,9 +17,7 @@ public class Foro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idforo;
 
-    /* [Descomentar cuando Seccion este en model]
     @OneToOne
     @JoinColumn(name = "id_seccion")
     private Seccion seccion;
-     */
 }

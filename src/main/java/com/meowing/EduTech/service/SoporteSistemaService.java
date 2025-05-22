@@ -33,10 +33,10 @@ public class SoporteSistemaService {
         return soporteSistemaRepository.save(sop);
     }
     
-    /* [Descomentar cuando usuario esté implementado y funcionando]
+
     public List<SoporteSistema> obtenerSoporteSistemaPorUsuario(Integer idUsuario) {
-        return soporteSistemaRepository.findByUsuarioId(idUsuario);
+        return soporteSistemaRepository.findByUsuario_idUsuario(idUsuario);
     }
-    */
+    
 
 }

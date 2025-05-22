@@ -23,12 +23,9 @@ public class SoporteSistema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSoporteSistema;
 
-    /* Quitar este comentario cuando la clase Usuario esté creada en la carpeta model 
     @OneToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
-    */
-
 
     @Column
     private LocalDateTime inicioTrabajoIncidencia;

@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 //** CLASE DEL MICROSERVICIO 2.- MONITOREO DEL SISTEMA **
 
 @RestController
-@RequestMapping("/api/v1/tipoIncidencias")
+@RequestMapping("/api/v1/tipoIncidencia")
 public class TipoIncidenciaController {
 
     private static final Logger logger = LoggerFactory.getLogger(TipoIncidenciaController.class);
@@ -43,15 +43,10 @@ public class TipoIncidenciaController {
     // Crear tipo de incidencia
     @PostMapping
     public ResponseEntity<?> creartipoIncidencia(@RequestBody TipoIncidencia tipo) {
-    try {
-        TipoIncidencia nuevoTipo = tipoIncidenciaService.agregarTipoIncidencia(tipo);
-        System.out.println("Se agregó un " + tipo);
+        TipoIncidencia nuevoTipo = tipoIncidenciaService.agregarTipoIncidencia(tipo);   
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoTipo);
-    } catch (Exception e) {
-        logger.error("Error al crear tipo de incidencia", e);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor.");
     }
 }
     
 
-}
+
