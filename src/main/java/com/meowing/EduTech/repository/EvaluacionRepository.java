@@ -13,10 +13,9 @@ import java.util.List;
 //** REPOSITORIO DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
 @Repository
 public interface EvaluacionRepository extends JpaRepository<Evaluacion, Integer>{
-<<<<<<< HEAD
 
     List<Evaluacion> findBySeccion_IdSeccion(Integer idSeccion);
-=======
+
     List<Evaluacion> findBySeccion_idSeccion(Integer idSeccion);
->>>>>>> 2e3e8ac78a633a779fb688d5cbfd58cf9292b9c2
+
 }

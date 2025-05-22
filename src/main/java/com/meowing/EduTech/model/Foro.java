@@ -17,15 +17,9 @@ public class Foro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idforo;
 
-<<<<<<< HEAD
-    @OneToOne
-    @JoinColumn(name = "id_seccion")
-    private Seccion seccion;
-=======
-
     @OneToOne
     @JoinColumn(name = "id_seccion")
     private Seccion seccion;
 
->>>>>>> 2e3e8ac78a633a779fb688d5cbfd58cf9292b9c2
+
 }

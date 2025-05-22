@@ -31,7 +31,7 @@ public class SoporteIncidencia {
     @Column(nullable = false)
     private LocalDateTime fechaInicioIncidencia;
 
-    @Column
+    @Column(nullable = true)
     private LocalDateTime fechaTerminoIncidencia;
 
     @ManyToOne

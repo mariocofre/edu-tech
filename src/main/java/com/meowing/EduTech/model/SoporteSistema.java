@@ -2,7 +2,6 @@ package com.meowing.EduTech.model;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,11 +22,12 @@ public class SoporteSistema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSoporteSistema;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
+
     @Column
     private LocalDateTime inicioTrabajoIncidencia;
-    
+
 }

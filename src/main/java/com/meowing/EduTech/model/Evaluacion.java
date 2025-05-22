@@ -24,17 +24,8 @@ public class Evaluacion {
     @Column(nullable = false)
     private Date fecha_Evaluacion;
 
-<<<<<<< HEAD
-    
-    @OneToOne
-    @JoinColumn(name = "id_seccion",nullable = false)
-    private Seccion seccion;
-    
-=======
-
     @ManyToOne
     @JoinColumn(name = "id_seccion",nullable = false)
     private Seccion seccion;
 
->>>>>>> 2e3e8ac78a633a779fb688d5cbfd58cf9292b9c2
 }

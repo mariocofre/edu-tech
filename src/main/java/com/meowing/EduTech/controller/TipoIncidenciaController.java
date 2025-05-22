@@ -24,7 +24,6 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/v1/tipoIncidencia")
 public class TipoIncidenciaController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TipoIncidenciaController.class);
 
     @Autowired
     private TipoIncidenciaService tipoIncidenciaService;
@@ -42,11 +41,9 @@ public class TipoIncidenciaController {
     
     // Crear tipo de incidencia
     @PostMapping
-    public ResponseEntity<?> creartipoIncidencia(@RequestBody TipoIncidencia tipo) {
+    public ResponseEntity<TipoIncidencia> creartipoIncidencia(@RequestBody TipoIncidencia tipo) {
         TipoIncidencia nuevoTipo = tipoIncidenciaService.agregarTipoIncidencia(tipo);   
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoTipo);
     }
+
 }
-    
-
-
