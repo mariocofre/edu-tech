@@ -28,4 +28,8 @@ public class Nota {
     @ManyToOne
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e3e8ac78a633a779fb688d5cbfd58cf9292b9c2
 }

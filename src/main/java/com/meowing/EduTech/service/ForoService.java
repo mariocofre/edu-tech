@@ -26,9 +26,7 @@ public class ForoService {
     public void eliminarForo(int id) {foroRepository.deleteById(id);}
 
     // Obtener foro por seccion
-    /*
-    public List<Foro> forosBySeccion(Integer idSeccion){
-        return foroRepository.findByidSeccion(Integer idSeccion)
+    public List<Foro> forosBySeccion(Integer id_Seccion){
+        return foroRepository.findBySeccion_idSeccion(id_Seccion);
     }
-     */
 }

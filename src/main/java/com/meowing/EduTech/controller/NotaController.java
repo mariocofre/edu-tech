@@ -34,11 +34,10 @@ public class NotaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaNota);
     }
 
-    /* [Descomentar cuando Usuario se encuentre operativo]
+
     @GetMapping("/usuario/{idUsuario}")
     public ResponseEntity<List<Nota>> obtenerNotaDeUsuario(@PathVariable Integer idUsuario) {
         List<Nota> nuevaNota = notaService.obtenerNotasPorUsuario(idUsuario);
         return ResponseEntity.ok(nuevaNota);
     }
-    */
 }

@@ -30,9 +30,8 @@ public class ComentarioForoService {
     }
 
     // Obteer comentarios por id de usuario
-    /*
     public List<ComentarioForo> obtenerComentarioByUsuario(Integer idUsuario) {
-        return comentarioForoRepository.findByUsuario(Integer idUsuario)
+        return comentarioForoRepository.findByUsuario_idUsuario(idUsuario);
     }
-     */
+
 }

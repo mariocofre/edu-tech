@@ -14,7 +14,6 @@ public interface ComentarioForoRepository extends JpaRepository<ComentarioForo, 
     List<ComentarioForo> findByForo_Idforo(Integer idForo);
 
     //Funcion para anclar id de usuario a comentario foros
-    /*
-    List<ComentarioForo> findByUsuarioId(Integer idUsuario);
-     */
+    List<ComentarioForo> findByUsuario_idUsuario(Integer idUsuario);
+
 }

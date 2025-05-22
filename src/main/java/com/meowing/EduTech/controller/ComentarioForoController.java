@@ -54,16 +54,14 @@ public class ComentarioForoController {
     }
 
     //Obtener comentarios por id de usuario
-    /*
     @GetMapping("/usuario/{id}")
     public ResponseEntity<List<ComentarioForo>> obtenerComentarioByUsuario(@PathVariable Integer idUsuario) {
-        List<ComentarioForo> comentarios = comentarioForoService.findByUsuario(Integer idUsuario);
+        List<ComentarioForo> comentarios = comentarioForoService.obtenerComentarioByUsuario(idUsuario);
         if (comentarios.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(comentarios);
         }
     }
-    */
 
 }

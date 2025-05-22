@@ -53,7 +53,7 @@ public class UsuarioController {
         }
     }
 
-    //Obtener comentarios por id de foro
+    //Obtener usuarios por tipo usuario
     @GetMapping("/tipousuario/{idTipoUsuario}")
     public ResponseEntity<List<Usuario>> obtenerUsuario(@PathVariable Integer idTipoUsuario) {
         List<Usuario> comentarios = usuarioService.obtenerUsuarioByTipoUsuario(idTipoUsuario);

@@ -32,7 +32,11 @@ public class ComentarioForo {
     @JoinColumn(name = "id_foro", nullable = false)
     private Foro foro;
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 2e3e8ac78a633a779fb688d5cbfd58cf9292b9c2
     @ManyToOne
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;

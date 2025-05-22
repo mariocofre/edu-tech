@@ -43,11 +43,9 @@ public class ForoController {
     }
 
     //Encontrar foro por idSeccion
-    /*
     @GetMapping("/seccion/{id}")
-    public ResponseEntity<List<Foro>> foroBySeccion(@PathVariable int id) {
-        List<Foro> foros = foroService.findByidSeccion(idSeccion);
+    public ResponseEntity<List<Foro>> foroBySeccion(@PathVariable Integer id_Seccion) {
+        List<Foro> foros = foroService.forosBySeccion(id_Seccion);
         return ResponseEntity.ok(foros);
     }
-     */
 }

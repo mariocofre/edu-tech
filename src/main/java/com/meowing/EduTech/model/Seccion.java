@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Seccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_Seccion;
+    private int idSeccion;
 
     @Column(nullable = false)
     private String codigoSeccion;

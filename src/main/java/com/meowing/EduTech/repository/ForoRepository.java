@@ -11,7 +11,5 @@ import java.util.List;
 public interface ForoRepository extends JpaRepository<Foro, Integer> {
 
     //Funcion para anclar id de seccion a foro
-    /*
-    List<Foro> findByidSeccion(Integer idSeccion);
-     */
+    List<Foro> findBySeccion_idSeccion(Integer id_Seccion);
 }
