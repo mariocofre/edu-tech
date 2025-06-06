@@ -15,7 +15,7 @@ public class Seccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSeccion;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String codigoSeccion;
 
     @Column(nullable = false)

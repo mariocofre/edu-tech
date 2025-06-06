@@ -18,16 +18,16 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Usuario obtenerUsuario(int id) {
-        return usuarioRepository.findById(id).get();
+    public Usuario obtenerUsuario(String run) {
+        return usuarioRepository.findByRunUsuario(run);
     }
 
     public Usuario guardarUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public void eliminarUsuario(int id) {
-        usuarioRepository.deleteById(id);
+    public void eliminarUsuario(String run) {
+        usuarioRepository.deleteByRunUsuario(run);
     }
 
     public List<Usuario> obtenerUsuarioByTipoUsuario(Integer idTipoUsuario) {

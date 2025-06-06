@@ -33,20 +33,20 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<Usuario> obtenerUsuario(@PathVariable int id) {
+    @GetMapping("/rut/{run}")
+    public ResponseEntity<Usuario> obtenerUsuario(@PathVariable String run) {
         try{
-            Usuario usuario = usuarioService.obtenerUsuario(id);
+            Usuario usuario = usuarioService.obtenerUsuario(run);
             return ResponseEntity.ok(usuario);
         } catch (Exception e){
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/id/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable int id) {
+    @DeleteMapping("/rut/{run}")
+    public ResponseEntity<Void> eliminar(@PathVariable String run) {
         try {
-            usuarioService.eliminarUsuario(id);
+            usuarioService.eliminarUsuario(run);
             return ResponseEntity.noContent().build();
         } catch (Exception e){
             return ResponseEntity.notFound().build();
