@@ -15,12 +15,12 @@ import java.util.Date;
 public class CursoContenido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_CursoContenido;
+    private int idCursoContenido;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String encabezado;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1000)
     private String contenido;
 
     @Column(nullable = false)

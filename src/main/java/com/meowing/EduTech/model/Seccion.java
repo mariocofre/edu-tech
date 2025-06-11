@@ -15,18 +15,18 @@ public class Seccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSeccion;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 5)
     private String codigoSeccion;
 
-    @Column(nullable = false)
+    @Column(nullable = true, length = 1000)
     private String comentarios;
 
     @ManyToOne
-    @JoinColumn(name = "id_curso",nullable = false)
+    @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
 

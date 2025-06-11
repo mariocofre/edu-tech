@@ -18,7 +18,7 @@ public class Foro {
     private int idforo;
 
     @OneToOne
-    @JoinColumn(name = "id_seccion")
+    @JoinColumn(name = "id_seccion", nullable = false)
     private Seccion seccion;
 
 

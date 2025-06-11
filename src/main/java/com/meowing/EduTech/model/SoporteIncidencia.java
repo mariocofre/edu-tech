@@ -25,7 +25,7 @@ public class SoporteIncidencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSoporteIncidencia;
 
-    @Column(length = 1000)
+    @Column(nullable = false, length = 1000)
     private String detalles;
 
     @Column(nullable = false)
@@ -35,11 +35,11 @@ public class SoporteIncidencia {
     private LocalDateTime fechaTerminoIncidencia;
 
     @ManyToOne
-    @JoinColumn(name = "id_soporte_sistema", unique = false)
+    @JoinColumn(name = "id_soporte_sistema", nullable = false)
     private SoporteSistema soporteSistema;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo_incidencia", unique = false)
+    @JoinColumn(name = "id_tipo_incidencia", nullable = false)
     private TipoIncidencia tipoIncidencia;
     
 }

@@ -15,17 +15,17 @@ public class Nota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_nota;
+    private int idNota;
 
     @Column(nullable = false)
     private Float nota;
 
     @ManyToOne
-    @JoinColumn(name = "id_evaluacion",nullable = false)
+    @JoinColumn(name = "id_evaluacion", nullable = false)
     private Evaluacion evaluacion;
 
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 }

@@ -24,14 +24,14 @@ public class Pago {
     @Column(nullable = false)
     private LocalDateTime fecha;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String comprobante;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @OneToOne
+    @ManyToOne  // Aqui les debo decir a los chicos sobre la relacion, ya que un curso puede tener muchos pagos. Antes estaba en OneToOne, ahora lo puse en ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
 }

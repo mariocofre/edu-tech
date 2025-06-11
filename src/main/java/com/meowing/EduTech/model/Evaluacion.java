@@ -16,16 +16,16 @@ import java.util.Date;
 public class Evaluacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Evaluacion;
+    private int idEvaluacion;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false, length = 100)
     private String tema;
 
     @Column(nullable = false)
-    private Date fecha_Evaluacion;
+    private Date fechaEvaluacion;
 
     @ManyToOne
-    @JoinColumn(name = "id_seccion",nullable = false)
+    @JoinColumn(name = "id_seccion", nullable = false)
     private Seccion seccion;
 
 }

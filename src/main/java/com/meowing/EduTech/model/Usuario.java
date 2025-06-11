@@ -18,19 +18,19 @@ public class Usuario {
     @Column(unique = true, length = 13, nullable = false)
     private String runUsuario;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 60)
     private String nombreUsuario;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 60)
     private String apellidoUsuario;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String passwordUsuario;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 60)
     private String emailUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipousuario",nullable = false)
+    @JoinColumn(name = "id_tipo_usuario",nullable = false)
     private TipoUsuario tipoUsuario;
 }

@@ -4,7 +4,6 @@ package com.meowing.EduTech.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.meowing.EduTech.model.SoporteIncidencia;
-import com.meowing.EduTech.model.SoporteSistema;
 import com.meowing.EduTech.repository.SoporteIncidenciaRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
