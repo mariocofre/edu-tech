@@ -1,8 +1,6 @@
 package com.meowing.EduTech;
 
-import com.meowing.EduTech.model.Curso;
-import com.meowing.EduTech.model.TipoUsuario;
-import com.meowing.EduTech.model.Usuario;
+import com.meowing.EduTech.model.*;
 import com.meowing.EduTech.repository.*;
 import lombok.ToString;
 import net.datafaker.Faker;
@@ -11,7 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -134,6 +134,59 @@ public class DataLoader implements CommandLineRunner {
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
             usuario.setTipoUsuario(administrador);
+        }
+
+        // Obtener todos los Alumnos
+        List<Usuario> usuarios = usuarioRepository.findByTipoUsuario_IdTipoUsuario(1);
+
+        // Generar todos los cursos
+        List<Curso> cursos = cursoRepository.findAll();
+
+        // Generar Pago
+        for (int i = 0; i < 100; i++){
+            Pago pago = new Pago();
+            pago.setIdPago(i+1);
+            pago.setFecha(LocalDateTime.now());
+            pago.setUsuario(usuarios.get(i));
+            // El metodo con el cual se escoje un curso para el pago esta incompleto
+            // Cuando termine el DataLoader revisare que tan necesario es relacionarlos correctamente
+            pago.setCurso(cursos.get(random.nextInt(cursos.size())));
+            pagoRepository.save(pago);
+        }
+
+        // Generar CursoContenido
+        for (int i = 0; i < 30; i++){
+            CursoContenido curso = new CursoContenido();
+            curso.setIdCursoContenido(i+1);
+            curso.setEncabezado(faker.lorem().sentence(3));
+            curso.setContenido(faker.lorem().sentence(70));
+            curso.setFechaActualizacion(new Date());
+            curso.setCurso(cursos.get(random.nextInt(cursos.size())));
+            cursoContenidoRepository.save(curso);
+        }
+
+        // Genero datos para armar un codigo de seccion aleatorio
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        // Generar Seccion
+        for (int i = 0; i < 20; i++){
+            Seccion seccion = new Seccion();
+            seccion.setIdSeccion(i+1);
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < 5; j++){
+                sb.append(characters.charAt(random.nextInt(characters.length())));
+            }
+            seccion.setCodigoSeccion(sb.toString());
+            seccion.setComentarios(faker.lorem().sentence(50));
+            seccion.setCurso(cursos.get(random.nextInt(cursos.size())));
+            seccion.setUsuario(usuarios.get(random.nextInt(usuarios.size())));
+        }
+
+        // Generar TipoIncidencia
+        for (int i = 0; i < 5; i++){
+            TipoIncidencia tipoIncidencia = new TipoIncidencia();
+            tipoIncidencia.setIdTipoIncidencia(i+1);
+            tipoIncidencia.setTipo(faker.hacker().verb());
+            tipoIncidenciaRepository.save(tipoIncidencia);
         }
     }
 
