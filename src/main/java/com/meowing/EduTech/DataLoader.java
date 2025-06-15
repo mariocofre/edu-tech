@@ -58,7 +58,6 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-
     @Override
     public void run(String... args)throws Exception{
         //Creo una instancia de faker y random
@@ -104,8 +103,9 @@ public class DataLoader implements CommandLineRunner {
         //  Generar Alumnos
         for (int i = 0; i < 100; i++){
             Usuario usuario = new Usuario();
-            usuario.setIdUsuario(i+1);
+            //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
@@ -116,8 +116,9 @@ public class DataLoader implements CommandLineRunner {
         //  Generar profesores
         for (int i = 0; i < 10; i++){
             Usuario usuario = new Usuario();
-            usuario.setIdUsuario(i+1);
+            //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
@@ -128,12 +129,14 @@ public class DataLoader implements CommandLineRunner {
         //  Generar administradores
         for (int i = 0; i < 3; i++){
             Usuario usuario = new Usuario();
-            usuario.setIdUsuario(i+1);
+            //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
             usuario.setTipoUsuario(administrador);
+            usuarioRepository.save(usuario);
         }
 
         // Obtener todos los Alumnos
@@ -146,6 +149,7 @@ public class DataLoader implements CommandLineRunner {
         for (int i = 0; i < 100; i++){
             Pago pago = new Pago();
             pago.setIdPago(i+1);
+            pago.setComprobante(faker.code().asin());
             pago.setFecha(LocalDateTime.now());
             pago.setUsuario(usuarios.get(i));
             // El metodo con el cual se escoje un curso para el pago esta incompleto
@@ -179,6 +183,7 @@ public class DataLoader implements CommandLineRunner {
             seccion.setComentarios(faker.lorem().sentence(50));
             seccion.setCurso(cursos.get(random.nextInt(cursos.size())));
             seccion.setUsuario(usuarios.get(random.nextInt(usuarios.size())));
+            seccionRepository.save(seccion);
         }
 
         // Generar TipoIncidencia
@@ -188,7 +193,93 @@ public class DataLoader implements CommandLineRunner {
             tipoIncidencia.setTipo(faker.hacker().verb());
             tipoIncidenciaRepository.save(tipoIncidencia);
         }
-    }
 
+        // Generar lista de usuarios administradores
+        List<Usuario> admins = usuarioRepository.findByTipoUsuario_IdTipoUsuario(3);
+
+        // Generar SoporteSistema
+        for (int i = 0; i < 5; i++){
+            SoporteSistema soporteSistema = new SoporteSistema();
+            soporteSistema.setIdSoporteSistema(i+1);
+            soporteSistema.setUsuario(admins.get(random.nextInt(admins.size())));
+            soporteSistemaRepository.save(soporteSistema);
+        }
+
+        // Listar todas las secciones
+        List<Seccion> secciones = seccionRepository.findAll();
+
+        // Generar Evaluacion
+        // Para estas pruebas, ceraré una evaluacion por alumno y los conectare por los id que coincidan
+        // por esto el ciclo for solo se ejecuta en funcion a los alumnos que hayan
+        for (int i = 0; i < usuarios.size(); i++){
+            Evaluacion evaluacion = new Evaluacion();
+            evaluacion.setIdEvaluacion(i+1);
+            evaluacion.setTema(faker.educator().secondarySchool());
+            evaluacion.setFechaEvaluacion(new Date());
+            // aqui reviso las secciones hasta encontrar una que haga match con el usuario al que estamos
+            // buscando, ahí recien agrego la seccion correcta a la evaluación
+            for (int j = 0; j < secciones.size(); j++){
+                if(secciones.get(j).getUsuario().getIdUsuario().equals(usuarios.get(i).getIdUsuario())){
+                    evaluacion.setSeccion(secciones.get(j));
+                    break;
+                }
+            }
+            evaluacionRepository.save(evaluacion);
+        }
+
+        // Generar foro (haré un foro por seccion)
+        for (int i = 0; i < secciones.size(); i++){
+            Foro foro = new Foro();
+            foro.setIdforo(i+1);
+            foro.setSeccion(secciones.get(i));
+            foroRepository.save(foro);
+        }
+
+        //Listar SoporteSistemas
+        List<SoporteSistema> sistemas = soporteSistemaRepository.findAll();
+
+        //Listar TiposIncidencia
+        List<TipoIncidencia> tipoIncidencias = tipoIncidenciaRepository.findAll();
+
+        // Generar SoporteIncidencia
+        for (int i = 0; i < sistemas.size(); i++){
+            SoporteIncidencia soporteIncidencia = new SoporteIncidencia();
+            soporteIncidencia.setIdSoporteIncidencia(i+1);
+            soporteIncidencia.setDetalles(faker.lorem().sentence(50));
+            soporteIncidencia.setFechaInicioIncidencia(LocalDateTime.now());
+            soporteIncidencia.setFechaTerminoIncidencia(LocalDateTime.now());
+            soporteIncidencia.setSoporteSistema(sistemas.get(i));
+            soporteIncidencia.setTipoIncidencia(tipoIncidencias.get(random.nextInt(tipoIncidencias.size())));
+            soporteIncidenciaRepository.save(soporteIncidencia);
+        }
+
+        //Listar Foros
+        List<Foro> foros = foroRepository.findAll();
+
+        // Generar ComentarioForo
+        for (int i = 0; i < 30; i++){
+            ComentarioForo comentarioForo = new ComentarioForo();
+            comentarioForo.setId_comentario_foro(i+1);
+            comentarioForo.setEncabezado(faker.lorem().sentence(5));
+            comentarioForo.setMensaje(faker.lorem().sentence(50));
+            comentarioForo.setFecha_publicacion(new Date());
+            comentarioForo.setForo(foros.get(random.nextInt(foros.size())));
+            comentarioForo.setUsuario(usuarios.get(random.nextInt(usuarios.size())));
+            comentarioForoRepository.save(comentarioForo);
+        }
+
+        //Listar Evaluaciones
+        List<Evaluacion> evaluaciones = evaluacionRepository.findAll();
+
+        //Generar Nota
+        for (int i = 0; i < usuarios.size(); i++){
+            Nota nota = new Nota();
+            nota.setIdNota(i+1);
+            nota.setNota(random.nextFloat() * 6.0f + 1.0f);
+            nota.setEvaluacion(evaluaciones.get(i));
+            nota.setUsuario(usuarios.get(i));
+            notaRepository.save(nota);
+        }
+    }
 
 }
