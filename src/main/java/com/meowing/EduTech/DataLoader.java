@@ -67,19 +67,19 @@ public class DataLoader implements CommandLineRunner {
         // Generar TipoUsuario
         //  Tipo Alumno
         TipoUsuario alumno = new TipoUsuario();
-        alumno.setIdTipoUsuario(1);
+        //alumno.setIdTipoUsuario(1);
         alumno.setTipoUsuario("Alumno");
         tipoUsuarioRepository.save(alumno);
 
         //  Tipo Profesor
         TipoUsuario profesor = new TipoUsuario();
-        profesor.setIdTipoUsuario(2);
+        //profesor.setIdTipoUsuario(2);
         profesor.setTipoUsuario("Profesor");
         tipoUsuarioRepository.save(profesor);
 
         //  Tipo Administrador
         TipoUsuario administrador = new TipoUsuario();
-        administrador.setIdTipoUsuario(3);
+        //administrador.setIdTipoUsuario(3);
         administrador.setTipoUsuario("Administrador");
         tipoUsuarioRepository.save(administrador);
 
@@ -87,7 +87,7 @@ public class DataLoader implements CommandLineRunner {
 
         for (int i = 0; i < 10; i++){
             Curso curso = new Curso();
-            curso.setIdCurso(i+1);
+            //curso.setIdCurso(i+1);
             curso.setNombre(faker.educator().course());
             // No estoy convencido del uso de new Date para estos campos, lo hablare con el profe
             curso.setFecha_inicio(new Date());
@@ -105,7 +105,7 @@ public class DataLoader implements CommandLineRunner {
             Usuario usuario = new Usuario();
             //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
-            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters(1).toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
@@ -118,7 +118,7 @@ public class DataLoader implements CommandLineRunner {
             Usuario usuario = new Usuario();
             //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
-            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters(1).toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
@@ -131,7 +131,7 @@ public class DataLoader implements CommandLineRunner {
             Usuario usuario = new Usuario();
             //usuario.setIdUsuario(i+1);
             usuario.setNombreUsuario(faker.name().name());
-            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters().toUpperCase());
+            usuario.setRunUsuario(faker.number().digits(8) + "-" + faker.lorem().characters(1).toUpperCase());
             usuario.setApellidoUsuario(faker.name().lastName());
             usuario.setPasswordUsuario(faker.internet().password());
             usuario.setEmailUsuario(faker.internet().emailAddress());
@@ -148,7 +148,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar Pago
         for (int i = 0; i < 100; i++){
             Pago pago = new Pago();
-            pago.setIdPago(i+1);
+            //pago.setIdPago(i+1);
             pago.setComprobante(faker.code().asin());
             pago.setFecha(LocalDateTime.now());
             pago.setUsuario(usuarios.get(i));
@@ -161,7 +161,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar CursoContenido
         for (int i = 0; i < 30; i++){
             CursoContenido curso = new CursoContenido();
-            curso.setIdCursoContenido(i+1);
+            //curso.setIdCursoContenido(i+1);
             curso.setEncabezado(faker.lorem().sentence(3));
             curso.setContenido(faker.lorem().sentence(70));
             curso.setFechaActualizacion(new Date());
@@ -172,9 +172,9 @@ public class DataLoader implements CommandLineRunner {
         // Genero datos para armar un codigo de seccion aleatorio
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         // Generar Seccion
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < usuarios.size(); i++){
             Seccion seccion = new Seccion();
-            seccion.setIdSeccion(i+1);
+            //seccion.setIdSeccion(i+1);
             StringBuilder sb = new StringBuilder();
             for (int j = 0; j < 5; j++){
                 sb.append(characters.charAt(random.nextInt(characters.length())));
@@ -182,14 +182,14 @@ public class DataLoader implements CommandLineRunner {
             seccion.setCodigoSeccion(sb.toString());
             seccion.setComentarios(faker.lorem().sentence(50));
             seccion.setCurso(cursos.get(random.nextInt(cursos.size())));
-            seccion.setUsuario(usuarios.get(random.nextInt(usuarios.size())));
+            seccion.setUsuario(usuarios.get(i));
             seccionRepository.save(seccion);
         }
 
         // Generar TipoIncidencia
         for (int i = 0; i < 5; i++){
             TipoIncidencia tipoIncidencia = new TipoIncidencia();
-            tipoIncidencia.setIdTipoIncidencia(i+1);
+            //tipoIncidencia.setIdTipoIncidencia(i+1);
             tipoIncidencia.setTipo(faker.hacker().verb());
             tipoIncidenciaRepository.save(tipoIncidencia);
         }
@@ -200,7 +200,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar SoporteSistema
         for (int i = 0; i < 5; i++){
             SoporteSistema soporteSistema = new SoporteSistema();
-            soporteSistema.setIdSoporteSistema(i+1);
+            //soporteSistema.setIdSoporteSistema(i+1);
             soporteSistema.setUsuario(admins.get(random.nextInt(admins.size())));
             soporteSistemaRepository.save(soporteSistema);
         }
@@ -213,7 +213,7 @@ public class DataLoader implements CommandLineRunner {
         // por esto el ciclo for solo se ejecuta en funcion a los alumnos que hayan
         for (int i = 0; i < usuarios.size(); i++){
             Evaluacion evaluacion = new Evaluacion();
-            evaluacion.setIdEvaluacion(i+1);
+            //evaluacion.setIdEvaluacion(i+1);
             evaluacion.setTema(faker.educator().secondarySchool());
             evaluacion.setFechaEvaluacion(new Date());
             // aqui reviso las secciones hasta encontrar una que haga match con el usuario al que estamos
@@ -230,7 +230,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar foro (haré un foro por seccion)
         for (int i = 0; i < secciones.size(); i++){
             Foro foro = new Foro();
-            foro.setIdforo(i+1);
+            //foro.setIdforo(i+1);
             foro.setSeccion(secciones.get(i));
             foroRepository.save(foro);
         }
@@ -244,7 +244,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar SoporteIncidencia
         for (int i = 0; i < sistemas.size(); i++){
             SoporteIncidencia soporteIncidencia = new SoporteIncidencia();
-            soporteIncidencia.setIdSoporteIncidencia(i+1);
+            //soporteIncidencia.setIdSoporteIncidencia(i+1);
             soporteIncidencia.setDetalles(faker.lorem().sentence(50));
             soporteIncidencia.setFechaInicioIncidencia(LocalDateTime.now());
             soporteIncidencia.setFechaTerminoIncidencia(LocalDateTime.now());
@@ -259,7 +259,7 @@ public class DataLoader implements CommandLineRunner {
         // Generar ComentarioForo
         for (int i = 0; i < 30; i++){
             ComentarioForo comentarioForo = new ComentarioForo();
-            comentarioForo.setId_comentario_foro(i+1);
+            //comentarioForo.setId_comentario_foro(i+1);
             comentarioForo.setEncabezado(faker.lorem().sentence(5));
             comentarioForo.setMensaje(faker.lorem().sentence(50));
             comentarioForo.setFecha_publicacion(new Date());
@@ -274,7 +274,7 @@ public class DataLoader implements CommandLineRunner {
         //Generar Nota
         for (int i = 0; i < usuarios.size(); i++){
             Nota nota = new Nota();
-            nota.setIdNota(i+1);
+            //nota.setIdNota(i+1);
             nota.setNota(random.nextFloat() * 6.0f + 1.0f);
             nota.setEvaluacion(evaluaciones.get(i));
             nota.setUsuario(usuarios.get(i));
