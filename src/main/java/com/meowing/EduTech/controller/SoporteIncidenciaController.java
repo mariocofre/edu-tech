@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meowing.EduTech.model.SoporteIncidencia;
-import com.meowing.EduTech.model.SoporteSistema;
 import com.meowing.EduTech.service.SoporteIncidenciaService;
 
 

@@ -72,19 +72,19 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<dependency> <!--JUnit 5 para las pruebas unitarias-->
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- Mockito para la simulacion de dependencias-->
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<dependency> <!-- Swagger-->
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.6.0</version>

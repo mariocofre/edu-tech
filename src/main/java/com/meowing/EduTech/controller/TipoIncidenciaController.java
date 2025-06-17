@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.meowing.EduTech.model.TipoIncidencia;
 import com.meowing.EduTech.service.TipoIncidenciaService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 
 //** CLASE DEL MICROSERVICIO 2.- MONITOREO DEL SISTEMA **
