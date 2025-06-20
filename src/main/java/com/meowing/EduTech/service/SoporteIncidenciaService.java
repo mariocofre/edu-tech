@@ -21,9 +21,11 @@ public class SoporteIncidenciaService {
         return soporteIncidenciaRepository.findAll();
     }
 
-    public SoporteIncidencia obtenerIncidencia(int id) {
-        return soporteIncidenciaRepository.findById(id).get();
-    }   
+    public SoporteIncidencia obtenerIncidenciaPorId(int id) {
+    return soporteIncidenciaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Incidencia no encontrada con ID: " + id));
+    }
+
 
     public SoporteIncidencia guardarIncidencia(SoporteIncidencia incidencia) {
         return soporteIncidenciaRepository.save(incidencia);
@@ -41,8 +43,8 @@ public class SoporteIncidenciaService {
         }).orElseThrow(() -> new RuntimeException("Incidencia con ID " + id + " no encontrada."));
     }
 
-    public List<SoporteIncidencia> obtenerIncidenciaPorSoporte(int idSoporteSistema) {
-        return soporteIncidenciaRepository.findBySoporteSistema_IdSoporteSistema(idSoporteSistema);
+    public List<SoporteIncidencia> obtenerIncidenciaPorSoporteId(int idSoporteSistema) {
+        return soporteIncidenciaRepository.findBy_IdSoporteSistema(idSoporteSistema);
     }
 
 }

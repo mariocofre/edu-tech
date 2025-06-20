@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.meowing.EduTech.model.Evaluacion;
 import com.meowing.EduTech.model.SoporteIncidencia;
 import com.meowing.EduTech.service.SoporteIncidenciaService;
 
@@ -34,6 +35,7 @@ public class SoporteIncidenciaController {
     }
 
 
+
     // Listar incidencias del sistema
     @GetMapping // ENDPOINT OK
     public ResponseEntity<List<SoporteIncidencia>> listarIncidencias() {
@@ -44,6 +46,18 @@ public class SoporteIncidenciaController {
             return ResponseEntity.ok(incidencias);
         }
     }
+
+    @GetMapping("/buscar/{id}") // ENDPOINT OK
+    public ResponseEntity<SoporteIncidencia> obtenerPorId(@PathVariable int id) {
+        try {
+            SoporteIncidencia incidencia = incidenciaService.obtenerIncidenciaPorId(id);
+            return ResponseEntity.ok(incidencia); // 200 OK con el objeto
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build(); // 404 Not Found si no existe
+        }
+    }
+
+    
 
     // Actualizar una incidencia por su id
     @PutMapping("/update/{id}")  
@@ -56,9 +70,9 @@ public class SoporteIncidenciaController {
     }
 
 // Obtener una incidencia por el id de un soporte     
-    @GetMapping("/buscar/{id}") // ENDPOINT OK
-    public ResponseEntity<List<SoporteIncidencia>> obtenerIncidenicaDeSoporte(@PathVariable Integer idSoporteSistema) {
-        List<SoporteIncidencia> nuevaIncidencia = incidenciaService.obtenerIncidenciaPorSoporte(idSoporteSistema);
-        return ResponseEntity.ok(nuevaIncidencia);
+    @GetMapping("/buscarPorSoporte/{id}") // ENDPOINT OK
+    public ResponseEntity<List<SoporteIncidencia>> buscarPorSoporteId(@PathVariable Integer idSoporteSistema) {
+        List<SoporteIncidencia> nuevoSoporte = incidenciaService.obtenerIncidenciaPorSoporteId(idSoporteSistema);
+        return ResponseEntity.ok(nuevoSoporte);
     }
 }

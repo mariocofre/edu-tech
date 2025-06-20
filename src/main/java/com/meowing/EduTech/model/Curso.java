@@ -28,6 +28,4 @@ public class Curso {
 
     @Column(nullable = false)
     private Float precio;
-
-
 }
