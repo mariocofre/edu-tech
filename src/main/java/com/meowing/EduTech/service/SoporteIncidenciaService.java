@@ -17,21 +17,28 @@ public class SoporteIncidenciaService {
     @Autowired
     private SoporteIncidenciaRepository soporteIncidenciaRepository;
 
+
+
+    // Este método lista las incidencias 
     public List<SoporteIncidencia> obtenerIncidencias(){
         return soporteIncidenciaRepository.findAll();
     }
 
+
+    // Este método obtiene solo una incidencia por el parametro id
     public SoporteIncidencia obtenerIncidenciaPorId(int id) {
     return soporteIncidenciaRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Incidencia no encontrada con ID: " + id));
     }
 
 
+    // Este método guarda una incidencia
     public SoporteIncidencia guardarIncidencia(SoporteIncidencia incidencia) {
         return soporteIncidenciaRepository.save(incidencia);
     }
     
 
+    // Este método actualiza una incidencia existente
     public SoporteIncidencia actualizarIncidencia(int id, SoporteIncidencia nuevaIncidencia) {
         return soporteIncidenciaRepository.findById(id).map(incidenciaExistente -> {
             incidenciaExistente.setDetalles(nuevaIncidencia.getDetalles());
@@ -43,8 +50,10 @@ public class SoporteIncidenciaService {
         }).orElseThrow(() -> new RuntimeException("Incidencia con ID " + id + " no encontrada."));
     }
 
-    public List<SoporteIncidencia> obtenerIncidenciaPorSoporteId(int idSoporteSistema) {
-        return soporteIncidenciaRepository.findBy_IdSoporteSistema(idSoporteSistema);
+
+
+    public List<SoporteIncidencia> obtenerIncidenciaPorIdSoporteSistema(int idSoporteSistema) {
+        return soporteIncidenciaRepository.findBySoporteSistema_IdSoporteSistema(idSoporteSistema);
     }
 
 }

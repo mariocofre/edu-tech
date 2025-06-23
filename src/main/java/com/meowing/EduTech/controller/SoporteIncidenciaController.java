@@ -20,7 +20,7 @@ import com.meowing.EduTech.service.SoporteIncidenciaService;
 
 
 @RestController
-@RequestMapping("api/v1/incidencia")
+@RequestMapping("api/v1/incidencias")
 public class SoporteIncidenciaController {
 
 
@@ -57,7 +57,6 @@ public class SoporteIncidenciaController {
         }
     }
 
-    
 
     // Actualizar una incidencia por su id
     @PutMapping("/update/{id}")  
@@ -69,10 +68,11 @@ public class SoporteIncidenciaController {
         return ResponseEntity.ok(actualizada);
     }
 
-// Obtener una incidencia por el id de un soporte     
+
+    // Obtener una incidencia por el id de un soporte     
     @GetMapping("/buscarPorSoporte/{id}") // ENDPOINT OK
     public ResponseEntity<List<SoporteIncidencia>> buscarPorSoporteId(@PathVariable Integer idSoporteSistema) {
-        List<SoporteIncidencia> nuevoSoporte = incidenciaService.obtenerIncidenciaPorSoporteId(idSoporteSistema);
+        List<SoporteIncidencia> nuevoSoporte = incidenciaService.obtenerIncidenciaPorIdSoporteSistema(idSoporteSistema);
         return ResponseEntity.ok(nuevoSoporte);
     }
 }

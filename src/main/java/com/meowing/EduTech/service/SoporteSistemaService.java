@@ -21,20 +21,20 @@ public class SoporteSistemaService {
     private SoporteSistemaRepository soporteSistemaRepository;
 
 
-    public List<SoporteSistema> obtenerTodosLosSoportes() {
+    public List<SoporteSistema> obtenerSoportes() {
         return soporteSistemaRepository.findAll();
     }
 
-    public SoporteSistema obtenerUnSoporte(int id) {
+    public SoporteSistema obtenerSoportePorId(int id) {
         return soporteSistemaRepository.findById(id).get();
     }
 
-    public SoporteSistema agregarUnSoporte(SoporteSistema sop) {
-        return soporteSistemaRepository.save(sop);
+    public SoporteSistema agregarSoporte(SoporteSistema soporte) {
+        return soporteSistemaRepository.save(soporte);
     }
     
 
-    public List<SoporteSistema> obtenerSoporteSistemaPorUsuario(Integer idUsuario) {
+    public List<SoporteSistema> obtenerSoportePorIdUsuario(Integer idUsuario) {
         return soporteSistemaRepository.findByUsuario_idUsuario(idUsuario);
     }
     

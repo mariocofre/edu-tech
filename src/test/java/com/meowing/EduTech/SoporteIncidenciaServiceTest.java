@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -103,20 +101,20 @@ public class SoporteIncidenciaServiceTest {
     public void testObtenerIncidenciaPorId() {
         int id = 1;
         
-        // Define el comportamiento del mock: cuando se llame a findById() con "1", devuelve una Carrera opcional.
+        // Define el comportamiento del mock: cuando se llame a findById() con "1", devuelve una Incidencia opcional.
         when(soporteIncidenciaRepository.findById(id)).thenReturn(Optional.of(soporteIncidencia));
 
         // Llama al método obtenerIncidenciaPorId() del servicio.
         SoporteIncidencia found = soporteIncidenciaService.obtenerIncidenciaPorId(id);
 
-        // Verifica que el SoporteIncidencia devuelta no sea nula y que su código coincida con el código esperado.
+        // Verifica que el SoporteIncidencia devuelta no sea nula y que su id coincida con el id esperado.
         assertNotNull(found);
         assertEquals(id, found.getIdSoporteIncidencia());
     }
 
 
 
-    // Test para guardar una incidencia
+    // Test para agregar una incidencia
     @Test
     public void testGuardarIncidencia() {
         
@@ -124,6 +122,7 @@ public class SoporteIncidenciaServiceTest {
         
         when(soporteIncidenciaRepository.save(soporteIncidencia)).thenReturn(soporteIncidencia);
         
+        // Llama al método save() del servicio.
         SoporteIncidencia saved = soporteIncidenciaService.guardarIncidencia(soporteIncidencia);
         
         assertNotNull(saved); // IMPORTANTE: asegurarse que no sea null
@@ -132,7 +131,8 @@ public class SoporteIncidenciaServiceTest {
 
 
 
-    /*@Test
+    // Test para actualizar una incidencia existente
+    @Test
     public void testActualizarIncidenciaExistente() {
         int id = 1;
 
@@ -166,8 +166,44 @@ public class SoporteIncidenciaServiceTest {
         assertEquals(nuevaIncidencia.getSoporteSistema(), actualizada.getSoporteSistema());
 
         // Verifica que se haya llamado a save()
-        verify(soporteIncidenciaRepository).save(incidenciaExistente);   // <----- ME QUEDÉ NE ESTA PARTE DEL CODIGO
-    }*/
+        verify(soporteIncidenciaRepository).save(incidenciaExistente);   
+    }
+
+
+
+    // Test para obtener incidencia por el id de soporte
+    @Test
+    public void testObtenerIncidenciaPorSoporteId() {
+        int idSoporteSistema = 1;
+
+        // Crear objeto relacionado (SoporteSistema)
+        SoporteSistema soporteSistema = new SoporteSistema();
+        soporteSistema.setIdSoporteSistema(idSoporteSistema);
+
+        // Crear incidencia simulada
+        SoporteIncidencia incidencia = new SoporteIncidencia();
+        incidencia.setIdSoporteIncidencia(100);
+        incidencia.setDetalles("Falla en módulo X");
+        incidencia.setSoporteSistema(soporteSistema);
+        incidencia.setFechaInicioIncidencia(LocalDateTime.now());
+
+        List<SoporteIncidencia> listaSimulada = List.of(incidencia);
+
+        // Mock del repositorio
+        when(soporteIncidenciaRepository.findBySoporteSistema_IdSoporteSistema(idSoporteSistema))
+                .thenReturn(listaSimulada);
+
+        // Ejecutar el método a testear
+        List<SoporteIncidencia> resultado = soporteIncidenciaService.obtenerIncidenciaPorIdSoporteSistema(idSoporteSistema);
+
+        // Verificar resultados
+        assertNotNull(resultado);
+        assertEquals(1, resultado.size());
+        assertEquals("Falla en módulo X", resultado.get(0).getDetalles());
+
+        // Verificar que se haya llamado correctamente al repositorio
+        verify(soporteIncidenciaRepository).findBySoporteSistema_IdSoporteSistema(idSoporteSistema);
+    }
 
 
     
