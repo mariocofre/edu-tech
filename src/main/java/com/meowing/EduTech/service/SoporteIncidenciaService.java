@@ -50,9 +50,13 @@ public class SoporteIncidenciaService {
         }).orElseThrow(() -> new RuntimeException("Incidencia con ID " + id + " no encontrada."));
     }
 
+<<<<<<< HEAD
 
 
     public List<SoporteIncidencia> obtenerIncidenciaPorIdSoporteSistema(int idSoporteSistema) {
+=======
+    public List<SoporteIncidencia> obtenerIncidenciaPorSoporteId(Integer idSoporteSistema) {
+>>>>>>> d0d38f5c71f556f31b151d214d148412c5342b1c
         return soporteIncidenciaRepository.findBySoporteSistema_IdSoporteSistema(idSoporteSistema);
     }
 
