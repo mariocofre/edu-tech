@@ -14,8 +14,9 @@ import com.meowing.EduTech.model.SoporteIncidencia;
 @Repository
 public interface SoporteIncidenciaRepository extends JpaRepository<SoporteIncidencia, Integer> {
 
-    List<SoporteIncidencia> findBy_IdSoporteSistema(int idSoporteSistema);
+    List<SoporteIncidencia> findBySoporteSistema_IdSoporteSistema(Integer idSoporteSistema);
 
-    List<SoporteIncidencia> findBy_IdSoporteIncidencia(int idSoporteIncidencia);
+    // Comente la linea de abajo por que no tiene ninguna funcion y no permite ejecutar el codigo
+    //List<SoporteIncidencia> findBy_IdSoporteIncidencia(int idSoporteIncidencia);
     
 }
