@@ -194,7 +194,7 @@ public class SoporteIncidenciaServiceTest {
                 .thenReturn(listaSimulada);
 
         // Ejecutar el método a testear
-        List<SoporteIncidencia> resultado = soporteIncidenciaService.obtenerIncidenciaPorIdSoporteSistema(idSoporteSistema);
+        List<SoporteIncidencia> resultado = soporteIncidenciaService.obtenerIncidenciaPorIdSoporte(idSoporteSistema);
 
         // Verificar resultados
         assertNotNull(resultado);

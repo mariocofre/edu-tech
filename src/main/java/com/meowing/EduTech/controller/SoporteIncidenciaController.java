@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.meowing.EduTech.model.Evaluacion;
 import com.meowing.EduTech.model.SoporteIncidencia;
 import com.meowing.EduTech.service.SoporteIncidenciaService;
 
@@ -72,7 +70,7 @@ public class SoporteIncidenciaController {
     // Obtener una incidencia por el id de un soporte     
     @GetMapping("/buscarPorSoporte/{id}") // ENDPOINT OK
     public ResponseEntity<List<SoporteIncidencia>> buscarPorSoporteId(@PathVariable Integer idSoporteSistema) {
-        List<SoporteIncidencia> nuevoSoporte = incidenciaService.obtenerIncidenciaPorIdSoporteSistema(idSoporteSistema);
+        List<SoporteIncidencia> nuevoSoporte = incidenciaService.obtenerIncidenciaPorIdSoporte(idSoporteSistema);
         return ResponseEntity.ok(nuevoSoporte);
     }
 }
