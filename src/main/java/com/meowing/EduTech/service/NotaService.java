@@ -20,10 +20,10 @@ public class NotaService {
     public List<Nota> obtenerNotas() {
         return notaRepository.findAll();
     }
-
+    /*  Metodo no utilizado
     public Nota obtenerNota(int id) {
         return notaRepository.findById(id).get();
-    }
+    } */
 
     public Nota subirNota(Nota nota) {
         return notaRepository.save(nota);
