@@ -2,8 +2,10 @@ package com.meowing.EduTech;
 
 
 import com.meowing.EduTech.model.*;
-import com.meowing.EduTech.repository.NotaRepository;
-import com.meowing.EduTech.service.NotaService;
+import com.meowing.EduTech.repository.EvaluacionRepository;
+import com.meowing.EduTech.service.EvaluacionService;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +14,22 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class NotaServiceTest {
+public class EvaluacionServiceTest {
 
     @Autowired
-    private NotaService notaService;
+    private EvaluacionService evaluacionService;
 
     @MockBean
-    private NotaRepository notaRepository;
+    private EvaluacionRepository evaluacionRepository;
 
-    private Nota nota;
+
     private TipoUsuario tipoUsuario;
     private Usuario usuario;
     private Curso curso;
@@ -34,7 +37,7 @@ public class NotaServiceTest {
     private Evaluacion evaluacion;
 
     @BeforeEach
-    public void setUp() {
+    public void setup(){
 
         // Creo un Tipo usuario
         tipoUsuario = new TipoUsuario();
@@ -94,52 +97,52 @@ public class NotaServiceTest {
         // Creo Evaluacion
         evaluacion = new Evaluacion();
         evaluacion.setIdEvaluacion(1);
-        evaluacion.setTema("Numeros y cosas lineales");
+        evaluacion.setTema("Desarrollo orientado a objetos");
         evaluacion.setFechaEvaluacion(new Date());
         evaluacion.setSeccion(seccion);
-
-        // Creo Nota
-        nota = new Nota();
-
-        nota.setIdNota(1);
-        nota.setNota(7F);
-        nota.setEvaluacion(evaluacion);
-        nota.setUsuario(usuario);
     }
 
     @Test
-    public void testObtenerNota(){
-        when(notaRepository.findAll()).thenReturn(List.of(nota));
+    public void testObtenerEvaluaciones(){
+        when(evaluacionRepository.findAll()).thenReturn(List.of(evaluacion));
 
-        List<Nota> notas = notaService.obtenerNotas();
+        List<Evaluacion> evaluaciones = evaluacionService.obtenerEvaluaciones();
 
-        assertNotNull(notas);
-        assertEquals(1,notas.size());
-        assertEquals(nota,notas.get(0));
-    }
-    @Test
-    public void testSubirNota(){
-        Nota nota = new Nota(2,7F,evaluacion,usuario);
-
-        when(notaRepository.save(nota)).thenReturn(nota);
-
-        Nota savedNota = notaService.subirNota(nota);
-
-        assertNotNull(savedNota);
-        assertEquals(nota,savedNota);
+        assertNotNull(evaluaciones);
+        assertEquals(1, evaluaciones.size());
+        assertEquals(evaluacion, evaluaciones.get(0));
     }
 
     @Test
-    public void testObtenerNotaUsuario(){
+    public void testObtenerEvaluacion(){
+        when(evaluacionRepository.findById(1)).thenReturn(Optional.of(evaluacion));
 
-        when(notaService.obtenerNotasPorUsuario(usuario.getIdUsuario())).thenReturn(List.of(nota));
+        Evaluacion evaluacionEncontrada = evaluacionService.obtenerEvaluacion(1);
 
-        List<Nota> found = notaService.obtenerNotasPorUsuario(usuario.getIdUsuario());
+        assertNotNull(evaluacionEncontrada);
+        assertEquals(evaluacion, evaluacionEncontrada);
+    }
 
-        assertNotNull(found);
-        assertEquals(1,found.size());
-        assertEquals(nota,found.get(0));
-        assertEquals(usuario.getIdUsuario(),found.get(0).getUsuario().getIdUsuario());
+    @Test
+    public void testGuardarEvaluacion(){
+        Evaluacion evaluacion = new Evaluacion(2,"Lenguaje",new Date(),seccion);
+
+        when(evaluacionRepository.save(evaluacion)).thenReturn(evaluacion);
+
+        Evaluacion evaluacionEncontrada = evaluacionService.guardarEvaluacion(evaluacion);
+
+        assertNotNull(evaluacionEncontrada);
+        assertEquals(evaluacion, evaluacionEncontrada);
+    }
+
+    @Test
+    public void testEliminarEvaluacion(){
+
+        doNothing().when(evaluacionRepository).deleteById(1);
+
+        evaluacionService.eliminarEvaluacion(1);
+
+        verify(evaluacionRepository, times(1)).deleteById(1);
     }
 
 
