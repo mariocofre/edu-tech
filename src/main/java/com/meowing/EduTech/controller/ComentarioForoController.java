@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/comentarios")
+@RequestMapping("/api/v1/comentarios")
 public class ComentarioForoController {
 
     @Autowired

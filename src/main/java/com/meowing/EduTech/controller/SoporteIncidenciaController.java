@@ -18,7 +18,7 @@ import com.meowing.EduTech.service.SoporteIncidenciaService;
 
 
 @RestController
-@RequestMapping("api/v1/incidencias")
+@RequestMapping("/api/v1/incidencias")
 public class SoporteIncidenciaController {
 
 

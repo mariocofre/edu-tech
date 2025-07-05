@@ -10,7 +10,7 @@ import java.util.List;
 
 //** CONTROLADOR DEL MICROSERVICIO 4.- EVALUACIONES Y SEGUIMIENTO**
 @RestController
-@RequestMapping("api/v1/evaluaciones")
+@RequestMapping("/api/v1/evaluaciones")
 public class EvaluacionController {
 
     @Autowired

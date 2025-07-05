@@ -39,10 +39,11 @@ public class SoporteIncidenciaServiceTest {
     private SoporteIncidenciaRepository soporteIncidenciaRepository;
 
     
+    // Declarando atributos de clases  
     private TipoUsuario tipoUsuario;
     private Usuario usuario;
     private SoporteSistema soporte;
-    private TipoIncidencia tipoIncidencia;
+    private TipoIncidencia tipoIncidencia; 
     private SoporteIncidencia soporteIncidencia;
 
 
@@ -173,7 +174,7 @@ public class SoporteIncidenciaServiceTest {
 
     // Test para obtener incidencia por el id de soporte
     @Test
-    public void testObtenerIncidenciaPorSoporteId() {
+    public void testObtenerIncidenciaPorIdSoporte() {
         int idSoporteSistema = 1;
 
         // Crear objeto relacionado (SoporteSistema)

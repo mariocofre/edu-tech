@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/seccion")
+@RequestMapping("/api/v1/seccion")
 public class SeccionController {
     @Autowired
     private SeccionService seccionService;
