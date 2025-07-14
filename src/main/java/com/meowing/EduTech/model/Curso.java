@@ -27,5 +27,5 @@ public class Curso {
     private Date fecha_termino;
 
     @Column(nullable = false)
-    private Float precio;
+    private Double precio;
 }

@@ -53,9 +53,9 @@ public class PagoController {
         @ApiResponse(responseCode = "404", description = "Pago no encontrado")
     })
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Pago> obtenerPago(@PathVariable int id) {
+    public ResponseEntity<Pago> obtenerPagoPorId(@PathVariable int id) {
         try {
-            Pago pago = pagoService.obtenerPago(id);
+            Pago pago = pagoService.obtenerPorIdPago(id);
             return ResponseEntity.ok(pago);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

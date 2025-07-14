@@ -18,9 +18,9 @@ public class ForoService {
     private ForoRepository foroRepository;
 
     public List<Foro> obtenerrForos() { return foroRepository.findAll(); }
-
+    /* Este metodo esta sin uso
     public Foro obtenerForo(int id) {return foroRepository.findById(id).get();}
-
+    */
     public Foro crearForo(Foro foro) {return foroRepository.save(foro);}
 
     public void eliminarForo(int id) {foroRepository.deleteById(id);}

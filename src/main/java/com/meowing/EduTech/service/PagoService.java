@@ -26,7 +26,7 @@ public class PagoService {
         return pagoRepository.findAll();
     }
 
-    public Pago obtenerPago(int idPago) {
+    public Pago obtenerPorIdPago(int idPago) {
         return pagoRepository.findById(idPago).get();
     }
 }

@@ -94,7 +94,7 @@ public class DataLoader implements CommandLineRunner {
             curso.setFecha_termino(new Date());
             // Formula del numero random:
             // min + (max - min) * random.nextFloat()
-            curso.setPrecio(30000 + (100000 - 30000) * random.nextFloat());
+            curso.setPrecio(30000.0 + (100000.0 - 30000.0) * random.nextFloat());
             cursoRepository.save(curso);
         }
 
