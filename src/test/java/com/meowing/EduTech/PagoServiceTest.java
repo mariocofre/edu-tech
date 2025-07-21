@@ -16,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.meowing.EduTech.model.Curso;
 import com.meowing.EduTech.model.Pago;
-import com.meowing.EduTech.model.SoporteSistema;
 import com.meowing.EduTech.model.TipoUsuario;
 import com.meowing.EduTech.model.Usuario;
 import com.meowing.EduTech.repository.PagoRepository;
@@ -83,7 +82,7 @@ public class PagoServiceTest {
     @Test
     public void testGuardarPago() {
 
-        // Asigna el valor 2 al atributo idPago del objeto pago.
+        // Asigna el valor 1 al atributo idPago del objeto pago.
         pago.setIdPago(1);
 
         // Cuando se llame al método save(pago) del pagoRepository, devuelve el mismo objeto pago.
@@ -95,9 +94,8 @@ public class PagoServiceTest {
 
         // Verifica que el objeto saved no sea null.
         assertNotNull(saved);
-        // Verifica que el ID del pago guardado (saved.getIdPago()) sea igual a 1.
+        // Verifica que el ID del pago guardado saved.getIdPago() sea igual a 1.
         assertEquals(1, saved.getIdPago());
-
     }
 
 

@@ -2,7 +2,6 @@ package com.meowing.EduTech;
 
 import com.meowing.EduTech.model.*;
 import com.meowing.EduTech.repository.*;
-import lombok.ToString;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

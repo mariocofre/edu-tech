@@ -36,6 +36,9 @@ public class PagoController {
         return ResponseEntity.ok(pagos);
     }
 
+
+    
+
     @Operation(summary = "Crear un nuevo pago", description = "Registra un nuevo pago en el sistema")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Pago creado exitosamente"),
@@ -47,10 +50,13 @@ public class PagoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoPago);
     }
 
+
+
+
     @Operation(summary = "Buscar un pago por ID", description = "Obtiene los datos de un pago según su ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Pago encontrado"),
-        @ApiResponse(responseCode = "404", description = "Pago no encontrado")
+        @ApiResponse(responseCode = "204", description = "Pago no encontrado")
     })
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Pago> obtenerPagoPorId(@PathVariable int id) {

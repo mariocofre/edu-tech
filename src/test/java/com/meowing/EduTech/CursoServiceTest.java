@@ -33,7 +33,7 @@ public class CursoServiceTest {
         curso.setNombre("Java Avanzado");
         curso.setFecha_inicio(new Date());
         curso.setFecha_termino(new Date());
-        curso.setPrecio(250000F);
+        curso.setPrecio(25000.0);
     }
 
     @Test

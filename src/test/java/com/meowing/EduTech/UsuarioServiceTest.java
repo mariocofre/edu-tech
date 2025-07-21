@@ -54,7 +54,7 @@ public class UsuarioServiceTest {
         // Define el comportamiento del mock: cuando se llame a findAll(), devuelve una lista con un Usuario.
         when(usuarioRepository.findAll()).thenReturn(List.of(usuario));
 
-        // Llama al método findAll() del servicio.
+        // Llama al método obtenerUsuarios() del servicio.
         List<Usuario> usuarios = usuarioService.obtenerUsuarios();
 
         // Verifica que la lista devuelta no sea nula y contenga exactamente un Usuario.
@@ -80,7 +80,7 @@ public class UsuarioServiceTest {
 
     @Test
     public void testGuardarUsuario() {
-        Usuario usuario= new Usuario(1, "12345678-9", "Juan", "Pérez", "claveSegura123", "juan.perez@correo.com", tipoUsuario);
+        Usuario usuario = new Usuario(1, "12345678-9", "Juan", "Pérez", "claveSegura123", "juan.perez@correo.com", tipoUsuario);
 
         // Define el comportamiento del mock: cuando se llame a save(), devuelve la Carrera proporcionada.
         when(usuarioRepository.save(usuario)).thenReturn(usuario);
@@ -88,7 +88,9 @@ public class UsuarioServiceTest {
         // Llama al método save() del servicio.
         Usuario saved = usuarioService.guardarUsuario(usuario);
 
-        // Verifica que la Carrera guardada no sea nula y que su nombre coincida con el nombre esperado.
+        // Verifica que la Carrera guardada no sea nula.
+        // Verifica que su nombre coincida con el nombre esperado.
+        // Verifica que su run coincida con el run esperado.
         assertNotNull(saved);
         assertEquals("Juan", saved.getNombreUsuario());
         assertEquals("12345678-9", saved.getRunUsuario());
@@ -113,7 +115,7 @@ public class UsuarioServiceTest {
         // ID del tipo de usuario a buscar
         Integer idTipoUsuario = 1;
 
-        // Simulamos que el repositorio retorna una lista con ese usuario
+        // Simulamos que el repositorio retorna una lista con ese idTipoUsuario
         when(usuarioRepository.findByTipoUsuario_IdTipoUsuario(idTipoUsuario)).thenReturn(List.of(usuario));
 
         // Llamamos al servicio

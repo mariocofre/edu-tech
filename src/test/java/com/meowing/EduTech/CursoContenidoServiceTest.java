@@ -34,7 +34,7 @@ public class CursoContenidoServiceTest {
         curso.setNombre("Curso Spring Boot");
         curso.setFecha_inicio(new Date());
         curso.setFecha_termino(new Date());
-        curso.setPrecio(100000F);
+        curso.setPrecio(10000.0);
 
         cursoContenido = new CursoContenido();
         cursoContenido.setIdCursoContenido(1);
